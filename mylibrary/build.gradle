@@ -26,6 +26,7 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:23.+'
     testCompile 'junit:junit:4.12'
+    compile 'com.github.bumptech.glide:glide:3.5.2'
 }
 
 ext {
@@ -36,14 +37,14 @@ ext {
     libraryName = 'mylibrary'
     artifact = 'mylibrary'
 
-    libraryDescription = 'test'
+    libraryDescription = 'A android tool utils kits'
 
     siteUrl = 'https://github.com/xujixiao'
     gitUrl = 'https://github.com/xujixiao'
 
-    libraryVersion = '1.0.2'
+    libraryVersion = '1.0.3'
 
-    developerId = 'loonggg'
+    developerId = 'xujixiao'
     developerName = 'xujixiao'
     developerEmail = '1107313740@qq.com'
 
@@ -53,3 +54,5 @@ ext {
 }
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+//gradlew install
+/*gradlew bintrayUpload*/
