@@ -1,4 +1,8 @@
 apply plugin: 'com.android.library'
+// add plugin
+apply plugin: 'com.github.dcendents.android-maven'
+apply plugin: 'com.jfrog.bintray'
+version = '1.0.5'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
@@ -24,35 +28,101 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:23.+'
+    compile 'com.android.support:appcompat-v7:25.+'
     testCompile 'junit:junit:4.12'
     compile 'com.github.bumptech.glide:glide:3.5.2'
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'xjx'
-
-    publishedGroupId = 'com.test'
-    libraryName = 'mylibrary'
-    artifact = 'mylibrary'
-
-    libraryDescription = 'A android tool utils kits'
-
-    siteUrl = 'https://github.com/xujixiao'
-    gitUrl = 'https://github.com/xujixiao'
-
-    libraryVersion = '1.0.3'
-
-    developerId = 'xujixiao'
-    developerName = 'xujixiao'
-    developerEmail = '1107313740@qq.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+task sourcesJar(type: Jar) {
+    from android.sourceSets.main.java.srcDirs
+    classifier = 'sources'
 }
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
+
+task javadoc(type: Javadoc) {
+    source = android.sourceSets.main.java.srcDirs
+    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+artifacts {
+    archives javadocJar
+    archives sourcesJar
+}
+
+group = 'com.test'
+install {
+    repositories.mavenInstaller {
+        pom.project {
+            packaging 'aar'
+            groupId 'com.test' //自己定义的组名
+            artifactId 'mylibrary'
+
+            name 'mylibrary'
+            description 'test'
+            url 'https://github.com/xujixiao'
+            inceptionYear '2016'
+
+            licenses {
+                license {
+                    name 'The Apache Software License, Version 2.0'
+                    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    distribution 'repo'
+                }
+            }
+            scm {
+                connection 'https://github.com/xujixiao'
+                url 'https://github.com/xujixiao'
+
+            }
+            developers {
+                developer {
+                    name 'xujixiao'
+                    email '1107313740@qq.com'
+                }
+            }
+        }
+
+    }
+}
+
+// Bintray
+
+//获取local.propertes的信息
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+bintray {
+    user = properties.getProperty("bintray.user")
+    key = properties.getProperty("bintray.apikey")
+    publish = true
+    configurations = ['archives']
+    pkg {
+        //填入 bintray 上对应的 package 信息
+        repo = 'maven'
+        name = 'xjx'
+        vcsUrl = 'https://github.com/xujixiao'
+        websiteUrl = 'https://github.com/xujixiao'
+        licenses = ['Apache-2.0']
+        issueTrackerUrl = 'https://github.com/xujixiao'
+        publicDownloadNumbers = true
+        version {
+            name = '1.0.5'
+            desc = 'test'
+            vcsTag = '1.0.5'
+            attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
+        }
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+task findConventions << {
+    println project.getConvention()
+}
 //gradlew install
 /*gradlew bintrayUpload*/
