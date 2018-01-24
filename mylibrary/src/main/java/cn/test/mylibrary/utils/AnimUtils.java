@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
+import cn.test.mylibrary.listener.MyAnimListener;
+import cn.test.mylibrary.listener.MyViewAnimListener;
+
 
 /**
  * Created by xujixiao on 2016/8/2.17:44

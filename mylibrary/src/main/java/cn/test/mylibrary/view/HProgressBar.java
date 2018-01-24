@@ -13,7 +13,8 @@ import android.view.View;
 
 import java.util.ArrayList;
 
-import cn.test.mylibrary.DisplayUtil;
+import cn.test.mylibrary.utils.DisplayUtil;
+
 
 /**
  */

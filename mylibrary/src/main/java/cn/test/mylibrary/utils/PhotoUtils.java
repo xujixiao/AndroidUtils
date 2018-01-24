@@ -19,7 +19,7 @@ import java.io.File;
  * 邮箱：1107313740@qq.com
  */
 
-public class PhoneUtils {
+public class PhotoUtils {
     // 拍照存放本地文件名称
     public static final String IMAGE_FILE_NAME = "temp.png";
     // 裁剪后的文件名称

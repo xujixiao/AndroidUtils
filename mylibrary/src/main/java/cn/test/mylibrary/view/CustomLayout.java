@@ -1,4 +1,4 @@
-package cn.test.mylibrary;
+package cn.test.mylibrary.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -6,9 +6,12 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
+import cn.test.mylibrary.utils.DisplayUtil;
+
 
 /**
  * Created by Administrator on 2015/9/21.
+ * 流式布局防止空间上去
  */
 public class CustomLayout extends RadioGroup {
 

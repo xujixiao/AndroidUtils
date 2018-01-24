@@ -8,16 +8,16 @@ import android.widget.GridView;
  * Created by xujixiao on 2015/12/2.
  * 自定义listview所有的子view全部充满
  */
-public class CustomGridview extends GridView {
-    public CustomGridview(Context context) {
+public class CustomGridView extends GridView {
+    public CustomGridView(Context context) {
         super(context);
     }
 
-    public CustomGridview(Context context, AttributeSet attrs) {
+    public CustomGridView(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
-    public CustomGridview(Context context, AttributeSet attrs, int defStyleAttr) {
+    public CustomGridView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
     }
 
