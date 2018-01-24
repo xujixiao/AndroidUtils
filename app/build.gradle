@@ -22,6 +22,9 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.+'
+    compile 'com.android.support:appcompat-v7:25.0.0'
     compile project(':mylibrary')
+    compile project(':alertview')
+
+//    compile 'com.test:mylibrary:1.0.7'
 }
