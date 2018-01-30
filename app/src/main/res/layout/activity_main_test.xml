@@ -14,5 +14,6 @@
         android:id="@+id/tv_ios_dialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="仿ios的弹窗" />
+        android:text="仿ios的弹窗"
+        android:textSize="55dp" />
 </RelativeLayout>

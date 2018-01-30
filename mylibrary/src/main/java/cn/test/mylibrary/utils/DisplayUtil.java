@@ -1,6 +1,10 @@
 package cn.test.mylibrary.utils;
 
+import android.app.Activity;
 import android.content.Context;
+import android.util.DisplayMetrics;
+
+import javax.crypto.spec.DESKeySpec;
 
 /**
  * Android大小单位转换工具类
@@ -30,10 +34,12 @@ public class DisplayUtil {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
+
     public static int dp2px(Context context, float dipValue) {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dipValue * scale + 0.5f);
     }
+
     /**
      * 将px值转换为sp值，保证文字大小不变
      *
@@ -54,5 +60,29 @@ public class DisplayUtil {
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
+    }
+
+    /**
+     * 获取屏幕宽度像素值
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenWidthPixels(Activity context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        context.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.widthPixels;
+    }
+
+    /**
+     * 获取屏幕宽度像素值
+     *
+     * @param context
+     * @return
+     */
+    public static int getScreenHeightPixels(Activity context) {
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+        context.getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        return displayMetrics.heightPixels;
     }
 }
