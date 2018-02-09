@@ -1,8 +1,7 @@
 apply plugin: 'com.android.library'
-// add plugin
 apply plugin: 'com.github.dcendents.android-maven'
 apply plugin: 'com.jfrog.bintray'
-version = '1.0.8'
+version = '1.0.9'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.2"
@@ -12,7 +11,6 @@ android {
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
     }
     buildTypes {
@@ -21,16 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile 'com.android.support:appcompat-v7:25.4.0'
-    testCompile 'junit:junit:4.12'
-    compile 'com.github.bumptech.glide:glide:3.5.2'
 }
 
 task sourcesJar(type: Jar) {
@@ -109,9 +97,9 @@ bintray {
         issueTrackerUrl = 'https://github.com/xujixiao'
         publicDownloadNumbers = true
         version {
-            name = '1.0.8'
+            name = '1.0.9'
             desc = 'test'
-            vcsTag = '1.0.8'
+            vcsTag = '1.0.9'
             attributes = ['gradle-plugin': 'com.use.less:com.use.less.gradle:gradle-useless-plugin']
         }
     }
