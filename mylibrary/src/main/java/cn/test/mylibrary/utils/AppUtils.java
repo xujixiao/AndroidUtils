@@ -32,7 +32,6 @@ public class AppUtils {
                 imei = "";
             }
 
-            // getLine1Number 手机号
             // getSimSerialNumber SIM卡序号
             // getSubscriberId IMSI
 
